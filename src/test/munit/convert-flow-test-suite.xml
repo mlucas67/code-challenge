@@ -13,27 +13,27 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
         <json:object-to-json-transformer doc:name="Object to JSON"/>
         <flow-ref name="convert-flow" doc:name="Flow-ref to convert-flow"/>
         <object-to-string-transformer doc:name="Object to String"/>
-        <munit:assert-on-equals expectedValue="#['{\n  &quot;result&quot;: [\n    &quot;MS3&quot;\n  ]\n}']" actualValue="#[payload]" doc:name="Assert Equals"/>
+        <munit:assert-on-equals expectedValue="#['{\n  &quot;result&quot;: [\n   &quot;7&quot;: &quot;MS3&quot;\n  ]\n}']" actualValue="#[payload]" doc:name="Assert Equals"/>
     </munit:test>
     <munit:test name="convert-3-to-ME" description="Test">
         <set-payload value="#[['min': 3, 'max': 3]]" doc:name="Copy_of_Set Payload"/>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
         <flow-ref name="convert-flow" doc:name="Flow-ref to convert-flow"/>
         <object-to-string-transformer doc:name="Object to String"/>
-        <munit:assert-on-equals expectedValue="#['{\n  &quot;result&quot;: [\n    &quot;ME&quot;\n  ]\n}']" actualValue="#[payload]" doc:name="Assert Equals"/>
+        <munit:assert-on-equals expectedValue="#['{\n  &quot;result&quot;: [\n    &quot;3&quot;: &quot;ME&quot;\n  ]\n}']" actualValue="#[payload]" doc:name="Assert Equals"/>
     </munit:test>
     <munit:test name="convert-21-to-MS3andME" description="Test">
         <set-payload value="#[['min': 21, 'max': 21]]" doc:name="Set Payload"/>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
         <flow-ref name="convert-flow" doc:name="Flow-ref to convert-flow"/>
         <object-to-string-transformer doc:name="Object to String"/>
-        <munit:assert-on-equals expectedValue="#['{\n  &quot;result&quot;: [\n    &quot;MS3 and ME&quot;\n  ]\n}']" actualValue="#[payload]" doc:name="Assert Equals"/>
+        <munit:assert-on-equals expectedValue="#['{\n  &quot;result&quot;: [\n    &quot;21&quot;: &quot;MS3 and ME&quot;\n  ]\n}']" actualValue="#[payload]" doc:name="Assert Equals"/>
     </munit:test>
     <munit:test name="convert-range" description="Test">
         <set-payload value="#[['min': 14, 'max': 21]]" doc:name="Set Payload"/>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
         <flow-ref name="convert-flow" doc:name="Flow-ref to convert-flow"/>
         <object-to-string-transformer doc:name="Object to String"/>
-        <munit:assert-on-equals expectedValue="#['{\n  &quot;result&quot;: [\n    &quot;MS3&quot;,\n    &quot;ME&quot;,\n    16,\n    17,\n    &quot;ME&quot;,\n    19,\n    20,\n    &quot;MS3 and ME&quot;\n  ]\n}']" actualValue="#[payload]" doc:name="Assert Equals"/>
+        <munit:assert-on-equals expectedValue="#['{\n  &quot;result&quot;: [\n    &quot;14&quot;: &quot;MS3&quot;,\n    &quot;15&quot;: &quot;ME&quot;,\n    &quot;16&quot;: 16,\n    &quot;17&quot;: 17,\n    &quot;18&quot;: &quot;ME&quot;,\n    &quot;19&quot;: 19,\n    &quot;20&quot;: 20,\n    &quot;21&quot;: &quot;MS3 and ME&quot;\n  ]\n}']" actualValue="#[payload]" doc:name="Assert Equals"/>
     </munit:test>
 </mule>
